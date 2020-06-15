@@ -1,0 +1,45 @@
+#!/usr/bin/env node
+
+const commander = require('commander')
+const { prompt, Separator } = require('inquirer')
+const revealAddress = require('./index')
+
+
+commander
+    .command('reveal')
+    .description('show address and private key from mnemonic words')
+    .option('-w, --words <words>', 'Mnemonic words')
+    .option('-n, --number <number>', 'Number of address to show')
+    .option('-p, --hdPath <hdPath>', 'Derivation Path')
+    .action(async (params) => {
+        const questions = [
+            {
+                type: 'input',
+                name: 'words',
+                message: 'Enter mnemonic words',
+                default: 'wheat another inherit express cost spy moral mushroom you drink slow forum frown shrimp embark soda bench girl security hamster artwork solid swing friend'
+            },
+            {
+                type: 'number',
+                name: 'number',
+                message: 'Enter number of address to show',
+                default: 3
+            },
+            {
+                type: 'input',
+                name: 'hdPath',
+                message: 'Enter Derivation Path',
+                default: "m/44'/889'/0'/0"
+            }
+        ]
+        prompt(questions).then(async answers => {
+            try {
+                const result = await revealAddress(answers.words.trim(), answers.number, answers.hdPath.trim())
+                console.log(result)
+            } catch (error) {
+                console.log(error)
+            }
+        })
+    })
+
+commander.parse(process.argv)

@@ -1,0 +1,27 @@
+{
+  "name": "reveal-private-key",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pqv199x/reveal-private-key.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pqv199x/reveal-private-key/issues"
+  },
+  "homepage": "https://github.com/pqv199x/reveal-private-key#readme",
+  "dependencies": {
+    "bip39": "^3.0.2",
+    "commander": "^5.1.0",
+    "ethereum-public-key-to-address": "0.0.2",
+    "ethers": "^5.0.2",
+    "hdkey": "^2.0.1",
+    "inquirer": "^7.2.0"
+  }
+}
