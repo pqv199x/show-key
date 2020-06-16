@@ -35,7 +35,7 @@ commander
         prompt(questions).then(async answers => {
             try {
                 const result = await revealAddress(answers.words.trim(), answers.number, answers.hdPath.trim())
-                console.log(result)
+                console.log(JSON.stringify(result, null, 2))
             } catch (error) {
                 console.log(error)
             }

@@ -1,4 +1,5 @@
 const bip39 = require('bip39')
+const bitcoinjs = require('bitcoinjs-lib')
 const HDKey = require('hdkey')
 const privateKeyToAddress = require('ethereum-public-key-to-address')
 const ethers = require('ethers')
@@ -15,8 +16,8 @@ async function revealAddress (words, offset, hdPath) {
             result.push({
                 index: i,
                 address: ethers.utils.getAddress(privateKeyToAddress(pub)),
-                publicKey: '0x' + pub,
-                privateKey: '0x' + pri
+                publicKey: pub,
+                privateKey: pri
             })
         }
         return result
