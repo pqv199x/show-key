@@ -2,7 +2,7 @@
 
 const commander = require('commander')
 const { prompt, Separator } = require('inquirer')
-const revealAddress = require('./index')
+const RevealAddress = require('./index')
 
 
 commander
@@ -11,10 +11,11 @@ commander
     .option('-w, --words <words>', 'Mnemonic words')
     .option('-n, --number <number>', 'Number of address to show')
     .option('-p, --hdPath <hdPath>', 'Derivation Path')
+    .option('-t, --type <type>', 'Type of network')
     .action(async (params) => {
         const questions = [
             {
-                type: 'input',
+                type: 'password',
                 name: 'words',
                 message: 'Enter mnemonic words',
                 default: 'wheat another inherit express cost spy moral mushroom you drink slow forum frown shrimp embark soda bench girl security hamster artwork solid swing friend'
@@ -30,11 +31,29 @@ commander
                 name: 'hdPath',
                 message: 'Enter Derivation Path',
                 default: "m/44'/889'/0'/0"
+            },
+            {
+                type : 'list',
+                name : 'type',
+                message : 'Choose type of network',
+                default: 'TomoChain - Ethereum',
+                choices: ['TomoChain - Ethereum', new Separator(), 'Bitcoin']
             }
         ]
         prompt(questions).then(async answers => {
             try {
-                const result = await revealAddress(answers.words.trim(), answers.number, answers.hdPath.trim())
+                let result
+                switch (answers.type) {
+                case 'TomoChain - Ethereum':
+                    result = await RevealAddress.tomo(answers.words.trim(), answers.number, answers.hdPath.trim())
+                    break
+                case 'Bitcoin':
+                    result = await RevealAddress.bitcoin(answers.words.trim(), answers.number, answers.hdPath.trim())
+                    break
+                default:
+                    result = await RevealAddress.tomo(answers.words.trim(), answers.number, answers.hdPath.trim())
+                    break;
+                }
                 console.log(JSON.stringify(result, null, 2))
             } catch (error) {
                 console.log(error)
