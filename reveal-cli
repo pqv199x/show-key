@@ -37,7 +37,7 @@ commander
                 name : 'type',
                 message : 'Choose type of network',
                 default: 'TomoChain - Ethereum',
-                choices: ['TomoChain - Ethereum', new Separator(), 'Bitcoin']
+                choices: ['TomoChain - Ethereum', new Separator(), 'Bitcoin', new Separator(), 'Tron']
             }
         ]
         prompt(questions).then(async answers => {
@@ -49,6 +49,9 @@ commander
                     break
                 case 'Bitcoin':
                     result = await RevealAddress.bitcoin(answers.words.trim(), answers.number, answers.hdPath.trim())
+                    break
+                case 'Tron':
+                    result = await RevealAddress.tron(answers.words.trim(), answers.number, answers.hdPath.trim())
                     break
                 default:
                     result = await RevealAddress.tomo(answers.words.trim(), answers.number, answers.hdPath.trim())
