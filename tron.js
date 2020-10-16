@@ -1,17 +1,7 @@
 const bip39 = require('bip39')
-const bitcoinjs = require('bitcoinjs-lib')
 const HDKey = require('hdkey')
 const TronWeb = require('tronweb')
 const EC = require('elliptic').ec
-
-const string2byte = (str) => {
-    let byteArray = []
-    for (let j = 0; j < str.length; j++) {
-        byteArray.push(str.charCodeAt(j))
-    }
-
-    return byteArray
-}
 
 const getPubKeyFromPriKey = (priKeyBytes) => {
     const ec = new EC('secp256k1');

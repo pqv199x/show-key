@@ -17,8 +17,7 @@ commander
             {
                 type: 'password',
                 name: 'words',
-                message: 'Enter mnemonic words',
-                default: 'wheat another inherit express cost spy moral mushroom you drink slow forum frown shrimp embark soda bench girl security hamster artwork solid swing friend'
+                message: 'Enter mnemonic words'
             },
             {
                 type: 'number',
@@ -27,22 +26,31 @@ commander
                 default: 3
             },
             {
-                type: 'input',
+                type: 'list',
                 name: 'hdPath',
                 message: 'Enter Derivation Path',
-                default: "m/44'/889'/0'/0"
+                choices: [
+                    { name: "TomoChain - m/44'/889'/0'/0", value: "m/44'/889'/0'/0" },
+                    { name: "Ethereum - m/44'/60'/0'", value: "m/44'/60'/0'" },
+                    { name: "Ledger Live - m/44'/60'/0'/0", value: "m/44'/60'/0'/0" },
+                    { name: "Tron network - m/44'/60'/0'/0", value: "m/44'/60'/0'/0" },
+                    { name: "Solana - m/501'/0'/0", value: "m/501'/0'/0" },
+                ]
             },
             {
                 type : 'list',
                 name : 'type',
                 message : 'Choose type of network',
                 default: 'TomoChain - Ethereum',
-                choices: ['TomoChain - Ethereum', new Separator(), 'Bitcoin', new Separator(), 'Tron']
+                choices: ['TomoChain - Ethereum', new Separator(), 'Bitcoin', new Separator(), 'Tron', new Separator(), 'Solana']
             }
         ]
         prompt(questions).then(async answers => {
             try {
                 let result
+                if (!answers.words) {
+                    throw new Error('mnemonic words are required')
+                }
                 switch (answers.type) {
                 case 'TomoChain - Ethereum':
                     result = await RevealAddress.tomo(answers.words.trim(), answers.number, answers.hdPath.trim())
@@ -53,13 +61,16 @@ commander
                 case 'Tron':
                     result = await RevealAddress.tron(answers.words.trim(), answers.number, answers.hdPath.trim())
                     break
+                case 'Solana':
+                    result = await RevealAddress.solana(answers.words.trim(), answers.number, answers.hdPath.trim())
+                    break
                 default:
                     result = await RevealAddress.tomo(answers.words.trim(), answers.number, answers.hdPath.trim())
                     break;
                 }
                 console.log(JSON.stringify(result, null, 2))
             } catch (error) {
-                console.log(error)
+                throw error
             }
         })
     })

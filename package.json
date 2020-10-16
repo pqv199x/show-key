@@ -18,15 +18,20 @@
   },
   "homepage": "https://github.com/pqv199x/reveal-private-key#readme",
   "dependencies": {
+    "@solana/web3.js": "^0.78.3",
+    "bip32": "^2.0.6",
     "bip39": "^3.0.2",
     "bitcoinjs-lib": "^5.1.10",
+    "bs58": "^4.0.1",
     "commander": "^5.1.0",
     "elliptic": "^6.5.3",
     "ethereum-public-key-to-address": "0.0.2",
     "ethers": "^5.0.2",
     "hdkey": "^2.0.1",
+    "immutable-tuple": "^0.4.10",
     "inquirer": "^7.2.0",
-    "tronweb": "^2.10.2"
+    "tronweb": "^2.10.2",
+    "tweetnacl": "^1.0.3"
   },
   "devDependencies": {
     "jsdoc": "^3.6.4"
