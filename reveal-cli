@@ -15,7 +15,7 @@ commander
     .action(async (params) => {
         const questions = [
             {
-                type: 'password',
+                type: 'input',
                 name: 'words',
                 message: 'Enter mnemonic words'
             },
