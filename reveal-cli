@@ -34,7 +34,9 @@ commander
                     { name: "Ethereum - m/44'/60'/0'", value: "m/44'/60'/0'" },
                     { name: "Ledger Live - m/44'/60'/0'/0", value: "m/44'/60'/0'/0" },
                     { name: "Tron network - Ledger Live - m/44'/195'/0'/0", value: "m/44'/195'/0'/0" },
-                    { name: "Solana - m/501'/0'/0", value: "m/501'/0'/0" },
+                    { name: "Solana - m/501'/0'/0 - deprecated", value: "0" },
+                    { name: "Solana - m/44'/501'/0' - bip44", value: "1" },
+                    { name: "Solana - m/44'/501'/0'/0' - bip44Changed", value: "2" }
                 ]
             },
             {
