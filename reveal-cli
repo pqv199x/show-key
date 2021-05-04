@@ -15,7 +15,7 @@ commander
     .action(async (params) => {
         const questions = [
             {
-                type: 'input',
+                type: 'password',
                 name: 'words',
                 message: 'Enter mnemonic words'
             },
@@ -33,7 +33,7 @@ commander
                     { name: "TomoChain - m/44'/889'/0'/0", value: "m/44'/889'/0'/0" },
                     { name: "Ethereum - m/44'/60'/0'", value: "m/44'/60'/0'" },
                     { name: "Ledger Live - m/44'/60'/0'/0", value: "m/44'/60'/0'/0" },
-                    { name: "Tron network - m/44'/60'/0'/0", value: "m/44'/60'/0'/0" },
+                    { name: "Tron network - Ledger Live - m/44'/195'/0'/0", value: "m/44'/195'/0'/0" },
                     { name: "Solana - m/501'/0'/0", value: "m/501'/0'/0" },
                 ]
             },

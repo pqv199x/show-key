@@ -1,5 +1,5 @@
 {
-  "name": "reveal-private-key",
+  "name": "show-key",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pqv199x/reveal-private-key.git"
+    "url": "git+https://github.com/pqv199x/show-key.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/pqv199x/reveal-private-key/issues"
+    "url": "https://github.com/pqv199x/show-key.git/issues"
   },
-  "homepage": "https://github.com/pqv199x/reveal-private-key#readme",
+  "homepage": "https://github.com/pqv199x/show-key.git#readme",
   "dependencies": {
     "@solana/web3.js": "^0.78.3",
     "bip32": "^2.0.6",
@@ -30,7 +30,7 @@
     "hdkey": "^2.0.1",
     "immutable-tuple": "^0.4.10",
     "inquirer": "^7.2.0",
-    "tronweb": "^2.10.2",
+    "tronweb": "^3.2.6",
     "tweetnacl": "^1.0.3"
   },
   "devDependencies": {
