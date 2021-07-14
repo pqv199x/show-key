@@ -31,11 +31,13 @@ async function revealAddress (words, offset, choice) {
             // const account = new Account(nacl.sign.keyPair.fromSeed(childkey.privateKey).secretKey)
 
             const account = new Account(nacl.sign.keyPair.fromSeed(key).secretKey)
+            const accountObj = JSON.parse(JSON.stringify(account.secretKey))
+
             result.push({
                 index: i,
                 address: account.publicKey.toBase58(),
-                publicKey: account.publicKey,
-                privateKey: key.toString('hex')
+                // publicKey: account.publicKey,
+                privateKey: '[' + accountObj.data.toString() + ']'
             })
         }
         return result
