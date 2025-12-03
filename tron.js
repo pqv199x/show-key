@@ -1,6 +1,6 @@
 const bip39 = require('bip39')
 const HDKey = require('hdkey')
-const TronWeb = require('tronweb')
+const {TronWeb} = require('tronweb')
 const EC = require('elliptic').ec
 
 const getPubKeyFromPriKey = (priKeyBytes) => {
@@ -33,12 +33,13 @@ async function revealAddress (words, offset, hdPath) {
         for (let i = 0; i < offset; i++) {
             const childkey = hdkey.derive(`${hdPath}/${i}`)
             const pri = childkey.privateKey.toString('hex')
-            const tronweb = new TronWeb(
-                'http://127.0.0.1:9090',
-                'http://127.0.0.1:9090',
-                'http://127.0.0.1:9090',
-                pri,
-            )
+            const tronweb = new TronWeb({
+                fullHost: 'http://127.0.0.1:9090',
+                fullNode: 'http://127.0.0.1:9090',
+                solidityNode: 'http://127.0.0.1:9090',
+                eventServer: 'http://127.0.0.1:9090',
+                privateKey: pri
+            })
 
             const pub = getPubKeyFromPriKey(tronweb.utils.code.hexStr2byteArray(pri))
 
